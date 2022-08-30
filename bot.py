@@ -41,6 +41,7 @@ def unknown(update: Update, context: CallbackContext):
 
 
 def unknown_text(update: Update, context: CallbackContext):
+	print(CallbackContext)
 	update.message.reply_text(
 		"Sorry I can't recognize you , you said '%s'" % update.message.text)
 
@@ -51,8 +52,7 @@ updater.dispatcher.add_handler(CommandHandler('help', help))
 updater.dispatcher.add_handler(CommandHandler('linkedin', linkedIn_url))
 updater.dispatcher.add_handler(CommandHandler('gmail', gmail_url))
 updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown))
-updater.dispatcher.add_handler(MessageHandler(
-	Filters.command, unknown)) # Filters out unknown commands
+updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown)) # Filters out unknown commands
 
 # Filters out unknown messages.
 updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown_text))
